@@ -1,21 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Login from './components/Auth/Login'
-import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
-import TaskListNumbers from './components/other/TaskListNumbers'
-import AdminDashboard from './components/Dashboard/AdminDashboard'
-import { getLocalStorage, setLocalStorage } from './utilis/localStorage'
 
 const App = () => {
+  const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    // setLocalStorage()
-    getLocalStorage()
-  },)
+  const handleLogin = (email, password) => {
+    const adminData = JSON.parse(localStorage.getItem('admin')) || []
+    const employeeData = JSON.parse(localStorage.getItem('employees')) || []
 
+    const adminUser = adminData.find(
+      (item) => item.email === email && item.password === password
+    )
+    const employeeUser = employeeData.find(
+      (item) => item.email === email && item.password === password
+    )
+
+    if (adminUser) {
+      console.log('this is admin')
+      setUser('admin')
+    } else if (employeeUser) {
+      console.log('this is user')
+      setUser('user')
+    } else {
+      alert('Invalid credentials')
+    }
+  }
 
   return (
    <>
-   <Login />
+  {!user ? <Login handleLogin={handleLogin} /> : '' }
    {/* <EmployeeDashboard/> */}
    {/* <AdminDashboard/> */}
    </>
