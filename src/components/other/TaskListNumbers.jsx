@@ -1,28 +1,25 @@
 import React from 'react'
 
-const TaskListNumbers = () => {
+const TaskListNumbers = ({data}) => {
   return (
-    <div className='flex mt-10 justify-between gap-5 w-full'>
-        <div className='h-40 flex-1 bg-red-400 text-white py-5 px-9 rounded-xl'>
-            <h2 className='text-2xl font-semibold'>0</h2>
-            <h3 className='text-xl font-medium'>New Task</h3>
+    <div className='flex mt-10 justify-between gap-5 screen'>
+        
+        <div className='rounded-xl w-[45%] py-6 px-9 bg-blue-400'>
+            <h2 className='text-3xl font-bold'>{data.taskCounts.newTask}</h2>
+            <h3 className='text-xl mt-0.5 font-medium'>New Task</h3>
         </div>
-
-        <div className='h-40 flex-1 bg-blue-400 text-white py-5 px-9 rounded-xl'>
-            <h2 className='text-2xl font-semibold'>0</h2>
-            <h3 className='text-xl font-medium'>New Task</h3>
+        <div className='rounded-xl w-[45%] py-6 px-9 bg-green-400'>
+            <h2 className='text-3xl font-bold'>{data.taskCounts.completed}</h2>
+            <h3 className='text-xl mt-0.5 font-medium'>Completed Task</h3>
         </div>
-
-        <div className='h-40 flex-1 bg-green-400 text-white py-5 px-9 rounded-xl'>
-            <h2 className='text-2xl font-semibold'>0</h2>
-            <h3 className='text-xl font-medium'>New Task</h3>
+        <div className='rounded-xl w-[45%] py-6 px-9 bg-yellow-400 '>
+            <h2 className='text-3xl text-black font-bold'>{data.taskCounts.active}</h2>
+            <h3 className='text-xl mt-0.5 text-black font-medium'>Accepted Task</h3>
         </div>
-
-        <div className='h-40 flex-1 bg-yellow-400 text-white py-5 px-9 rounded-xl'>
-            <h2 className='text-2xl font-semibold'>0</h2>
-            <h3 className='text-xl font-medium'>New Task</h3>
+        <div className='rounded-xl w-[45%] py-6 px-9 bg-red-400'>
+            <h2 className='text-3xl font-bold'>{data.taskCounts.failed}</h2>
+            <h3 className='text-xl mt-0.5 font-medium'>Failed Task</h3>
         </div>
-
     </div>
   )
 }
